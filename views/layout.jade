@@ -2,6 +2,13 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/app.css')
   body
-    block content
+    section#sidebar
+    section#page
+      block header
+      section#content
+        block content
+        #content-footer
+      footer#footer
+        | Footer content

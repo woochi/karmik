@@ -17,7 +17,7 @@ lrserver = require('tiny-lr')()
 livereloadport = 35729
 paths =
   scripts: ["./assets/javascripts/**/*.coffee"]
-  styles: ["./assets/stylseheets/**/*.sass"]
+  styles: ["./assets/stylesheets/**/*.sass", "./assets/stylesheets/**/*.scss"]
   images: ["./assets/images/**/*"]
   views: ["./views/*.jade", "./views/**/*.jade"]
   dest: "build"
@@ -41,8 +41,7 @@ gulp.task "scripts", ->
 
 gulp.task "styles", ->
   dest = path.join paths.dest, "stylesheets"
-  gulp.src(paths.styles)
-    .pipe(newer dest)
+  gulp.src("./assets/stylesheets/app.sass")
     .pipe(sass(sourcemap: true, compass: true))
     .on('error', gutil.log)
 		.on('error', gutil.beep)
@@ -75,7 +74,7 @@ gulp.task "watch", ->
 
   gulp.watch paths.scripts, ["scripts"]
   gulp.watch paths.styles, ["styles"]
-  gulp.watch paths.styles, ["images"]
+  gulp.watch paths.images, ["images"]
   gulp.watch paths.views, ["views"]
 
 gulp.task "default", [

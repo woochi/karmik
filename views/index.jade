@@ -1,5 +1,29 @@
 extends layout
 
+block header
+  header#hero
+    .hero-text
+      h1 Designing Experiences
+      hr.hero-rule
+      | I'm Mikko, a user interface developer based in Helsinki, Finland.<br>
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br>
+      | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
 block content
-  h1= title
-  p Welcome to KARMKA
+  article.featurette
+    .row
+      .column.medium-12.medium-centered
+        h1= title
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        hr
+  article.featurette
+    .row
+      .column.medium-12.medium-centered
+        h2= title
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        hr
+  article.featurette
+    .row
+      .column.medium-12.medium-centered
+        h3= title
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
