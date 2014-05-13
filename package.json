@@ -1,0 +1,53 @@
+{
+  "name": "Karmik",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "browser": {
+    "underscore": "./build/underscore/underscore.js",
+    "jquery": "./build/jquery/dist/jquery.js",
+    "react": "./build/react/react.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "coffeeify"
+    ]
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "react": "React",
+    "underscore": "_"
+  },
+  "devDependencies": {
+    "browserify": "^3.46.1",
+    "coffeeify": "^0.6.0",
+    "connect-livereload": "^0.4.0",
+    "gulp": "3.6.2",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-bower": "0.0.4",
+    "gulp-browserify": "^0.5.0",
+    "gulp-coffee": "^1.4.3",
+    "gulp-imagemin": "^0.5.0",
+    "gulp-livereload": "^1.5.0",
+    "gulp-newer": "^0.3.0",
+    "gulp-ruby-sass": "^0.4.3",
+    "gulp-uglify": "^0.3.0",
+    "gulp-util": "^2.2.14",
+    "tiny-lr": "0.0.7",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0",
+    "stylus": "0.42.3",
+    "coffee-script": "1.7.1"
+  }
+}
