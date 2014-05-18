@@ -5,7 +5,10 @@ logger = require("morgan")
 cookieParser = require("cookie-parser")
 bodyParser = require("body-parser")
 routes = require("./routes/index")
+helpers = require("./middleware/view-helpers")
 app = express()
+
+help = helpers("Mikko Kiveä")
 
 # view engine setup
 app.set "views", path.join(__dirname, "build", "views")
@@ -16,6 +19,7 @@ app.use bodyParser.json()
 app.use bodyParser.urlencoded()
 app.use cookieParser()
 app.use express.static(path.join(__dirname, "build"))
+app.use helpers("Mikko Kivelä")
 app.use "/", routes
 
 #/ catch 404 and forwarding to error handler
