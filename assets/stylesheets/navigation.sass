@@ -1,0 +1,21 @@
+$zindex-nav: 100
+
+.main-nav
+  position: absolute
+  right: rhythm(3)
+  top: rhythm(2)
+  z-index: $zindex-nav
+
+  .index-page &
+    animation: fadeIn ease 0.8s 1.2s both
+
+.nav-link
+
+  .main-nav &
+    font-weight: 600
+
+  .current &
+    color: $orange
+
+  .inverse &
+    color: $white
