@@ -1,0 +1,142 @@
+extends layouts/default
+
+block content
+
+  article.featurette
+    .row
+      .column.medium-9.medium-centered
+        h1 Questionnaire
+        p
+          | Requesting an estimate of a project is free, doesn't commit you
+          | to anything and only takes a few minutes of your time.
+          | More importantly, it helps me give you a
+          | realistic and accurate quote on the project costs.
+        p
+          | After clicking send, I'll get back to you within a few days and
+          | give you an initial project plan and estimate of costs.
+        form#questionnaire(action="/hire", method="post")
+          .row
+            .column.medium-6
+              fieldset
+                ul
+                  li
+                    label Name
+                    input.full(name="name", type="text")
+                  li
+                    label Website
+                    br
+                    input.full(name="website", type="text", value="http://")
+            .column.medium-6
+              fieldset
+                ul
+                  li
+                    label Email address
+                    br
+                    input.full(name="email", type="email")
+                  li
+                    label Location
+                    br
+                    input.full(name="location", type="text", placeholder="E.g. Helsinki, California or USA")
+          hr
+          h2 Project Details
+          fieldset
+            legend What can I help you with?
+            ul.inline-list
+              li.checkbox-item
+                label
+                  input(name="type", type="checkbox", value="design")
+                  .checkbox
+                    i.fa.fa-check.check-icon
+                  | Web Design
+              li.checkbox-item
+                label
+                  input(name="type", type="checkbox", value="development")
+                  .checkbox
+                    i.fa.fa-check.check-icon
+                  | Web Development
+              li.checkbox-item
+                label
+                  input(name="type", type="checkbox", value="branding")
+                  .checkbox
+                    i.fa.fa-check.check-icon
+                  | Branding
+              li.checkbox-item
+                label
+                  input(name="type", type="checkbox", value="other")
+                  .checkbox
+                    i.fa.fa-check.check-icon
+                  | Other&hellip;
+            p.description
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              | sed do eiusmod tempor incididunt ut labore et dolore magna
+              | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              | ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          fieldset
+            legend Is this a new project or a redesign?
+            ul.inline-list
+              li.radio-item
+                label
+                  input(name="redesign", type="radio", value="false")
+                  .radio
+                    i.fa.fa-circle.radio-icon
+                  | New project
+              li.radio-item
+                label
+                  input(name="redesign", type="radio", value="true")
+                  .radio
+                    i.fa.fa-circle.radio-icon
+                  | Redesign
+            p.description
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              | sed do eiusmod tempor incididunt ut labore et dolore magna
+              | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              | ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          fieldset
+            legend
+              strong Timeline.
+              | When do you need this project completed?
+            ul
+              li
+                select(name="timeline")
+                  option Please select one&hellip;
+                  option(value="As soon as possible") As soon as possible
+                  option(value="Within 3 weeks") Within 3 weeks
+                  option(value="Within 6 weeks") Within 6 weeks
+                  option(value="Within 9 weeks") Within 9 weeks
+                  options(value="Contact me when you're available")
+                    | Contact me when you're available
+            p.description
+              | A simple small-scale website can usually be completed within a
+              | week. Forms, Twitter feeds, management interfaces and all other
+              | dynamic features increase a project's time requirements.
+          fieldset
+            legend
+              strong Budget.
+              | How much can you invest in this project? (USD)
+            ul
+              li
+                select(name="budget")
+                  option Please select one&hellip;
+                  option(value="1500") < $1500
+                  option(value="2500") $1500-$2500
+                  option(value="5000") $2500-$5000
+                  option(value="10000") $5000-$10000
+                  options(value="NA") > $10000
+            p.description
+              | The cost of a project is closely related to the time it takes
+              | to complete. If you're unsure how much a typical web development 
+              | project costs, check out my 
+              | <a href="/faq" target="_blank">FAQ</a> for more details.
+          fieldset
+            legend Please provide any additional details for the project
+            ul
+              li
+                textarea(name="details", rows="8")
+            p.description
+              | Target audience and goals.
+              | Preferences, colors, good and bad examples.
+              | Competitors (and their websites).
+          fieldset.buttons
+            ul
+              li
+                button.primary-button(type="submit") Send the questionnaire

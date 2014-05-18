@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/app.css')
+    link( href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
+  body(class="#{currentPage()}")
+    section#sidebar
+    section#page
+      block navigation
+      block header
+      section#content
+        block content
+        #content-footer
+      footer#footer
+        .row
+          .column.medium-12
+            ul.some-links
+              li
+                a(href="https://twitter.com")
+                  i.fa.fa-lg.fa-twitter-square
+              li
+                a(href="https://linkedin.com")
+                  i.fa.fa-lg.fa-linkedin-square
+              li
+                a(href="mailto:mikko.s.kivela@gmail.com")
+                  i.fa.fa-lg.fa-envelope-o
+            include ../partials/navigation
+            | &copy; 1990-2014 Mikko Kivelä
