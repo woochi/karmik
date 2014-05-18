@@ -1,0 +1,23 @@
+$button-background: $gray
+$button-color: $white
+
+button, input[type="submit"], .button
+  @extend %base-font
+  +appearance(none)
+  cursor: pointer
+  transition: background 0.2s
+  padding: rhythm(0.5)
+  background: $button-background
+  color: $button-color
+  border: none
+  outline: none
+  +trailing-border(1px, 0.5)
+  border-color: darken($button-background, 20%)
+  border-radius: $global-radius
+
+  &:hover
+    background: $black
+
+.primary-button
+  background: $primary-color
+  border-color: darken($primary-color, 20%)

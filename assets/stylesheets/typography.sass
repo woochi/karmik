@@ -1,6 +1,12 @@
 html
   font-size: 100%
 
+%base-font
+  font-family: $base-font-family
+  font-size: $base-font-size
+  line-height: $base-line-height
+  color: $text-color
+
 body
   height: 100%
   margin: 0
@@ -50,9 +56,27 @@ h6
 p, ul, ol, pre, table, blockquote
   margin: rhythm(1) 0
 
+a
+  +link-colors($link-color, $link-color-hover, $link-color-active, $link-color-visited, $link-color-focus)
+  transition: all 0.2s
+  text-decoration: none
+
 hr
   display: block
   margin: rhythm(3) 0
   border: 1px inset $gray-lighter
   background: $white
   opacity: 0.5
+
+.inline-list
+  +clearfix
+  list-style: none
+  margin-bottom: 0
+  padding: 0
+
+  > li
+    float: left
+    margin: 0 rhythm(2) 0 0
+
+.text-center
+  text-align: center
