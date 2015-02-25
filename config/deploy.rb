@@ -47,7 +47,7 @@ namespace :server do
   task :start do
     on roles(:web) do
       within fetch(:deploy_to) do
-        execute "pm2 start bin/www.coffee"
+        execute "cd #{release_path} && pm2 start bin/www.coffee"
       end
     end
   end
@@ -55,7 +55,7 @@ namespace :server do
   task :restart do
     on roles(:web) do
       within fetch(:deploy_to) do
-        execute "pm2 restart www"
+        execute "cd #{release_path} && pm2 restart www"
       end
     end
   end
@@ -63,7 +63,7 @@ namespace :server do
   task :stop do
     on roles(:web) do
       within fetch(:deploy_to) do
-        execute :pm2, "stop www"
+        execute "cd #{release_path} && pm2 stop www"
       end
     end
   end
