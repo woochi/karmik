@@ -6,16 +6,11 @@ gutil = require("gulp-util")
 sass = require("gulp-sass")
 autoprefixer = require("gulp-autoprefixer")
 path = require("path")
-browserSync  = require('browser-sync')
-reload = browserSync.reload
 coffeeify = require("coffeeify")
 source = require('vinyl-source-stream')
 uglify = require('gulp-uglify')
 streamify = require('gulp-streamify')
 livereload = require("gulp-livereload")
-
-gulp.task 'browser-sync', ->
-  browserSync(server: {baseDir: "./"})
 
 paths =
   scripts: "./assets/javascripts/**/*.coffee"
