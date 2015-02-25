@@ -1,88 +1,77 @@
 gulp = require("gulp")
-coffee = require("gulp-coffee")
 uglify = require("gulp-uglify")
 imagemin = require("gulp-imagemin")
 browserify = require("browserify")
-source = require('vinyl-source-stream')
-newer = require('gulp-newer')
 gutil = require("gulp-util")
-sass = require("gulp-ruby-sass")
+sass = require("gulp-sass")
 autoprefixer = require("gulp-autoprefixer")
 path = require("path")
-bower = require('gulp-bower')
-livereload = require('connect-livereload')
-refresh = require('gulp-livereload')
-lrserver = require('tiny-lr')()
+browserSync  = require('browser-sync')
+reload = browserSync.reload
+pngquant = require('imagemin-pngquant')
+coffeeify = require("coffeeify")
+source = require('vinyl-source-stream')
+uglify = require('gulp-uglify')
+streamify = require('gulp-streamify')
+livereload = require("gulp-livereload")
 
-livereloadport = 35729
+gulp.task 'browser-sync', ->
+  browserSync(server: {baseDir: "./"})
+
 paths =
-  scripts: ["./assets/javascripts/**/*.coffee"]
-  styles: ["./assets/stylesheets/**/*.sass", "./assets/stylesheets/**/*.scss"]
-  images: ["./assets/images/**/*"]
-  views: ["./views/*.jade", "./views/**/*.jade"]
-  dest: "build"
-
-gulp.task 'bower', ->
-  bower().pipe gulp.dest(paths.dest)
+  scripts: "./assets/javascripts/**/*.coffee"
+  styles: "./assets/stylesheets/**/*.sass"
+  images: "./assets/images/**/*"
+  views: "./views/**/*.jade"
+  dest: "./build/"
 
 gulp.task "scripts", ->
-  dest = path.join paths.dest, "javascripts"
   bundleStream = browserify(
     entries: ["./assets/javascripts/app.coffee"]
-    extenstions: [".coffee"]
-  ).bundle(debug: true)
+    debug: true
+  ).bundle()
 
   bundleStream
     .on("error", gutil.log)
-    .on('error', gutil.beep)
-    .pipe(source('app.js'))
-    .pipe(gulp.dest(path.join paths.dest, "javascripts"))
-    .pipe(refresh(lrserver))
+    .pipe(source("app.js"))
+    .pipe(streamify(uglify()))
+    .pipe(gulp.dest(path.join(paths.dest, "javascripts")))
+    .pipe(livereload())
+
+  gulp.src("./vendor/html5shiv/dist/html5shiv.min.js")
+    .pipe(gulp.dest(path.join(paths.dest, "javascripts")))
 
 gulp.task "styles", ->
-  dest = path.join paths.dest, "stylesheets"
-  gulp.src("./assets/stylesheets/app.sass")
-    .pipe(sass(sourcemap: true, compass: true))
-    .on('error', gutil.log)
-		.on('error', gutil.beep)
+  gulp.src(paths.styles)
+    .pipe(sass(
+      compass: true
+      indentedSyntax: true
+      errorLogToConsole: true
+      onError: gutil.log
+    ))
     .pipe(autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7"))
-    .pipe(gulp.dest(dest))
-    .pipe(refresh(lrserver))
+    .on("error", gutil.log)
+    .pipe(gulp.dest(path.join(paths.dest, "stylesheets")))
+    .pipe(livereload())
 
 gulp.task "images", ->
-  dest = path.join paths.dest, "images"
   gulp.src(paths.images)
-    .pipe(newer dest)
-    .pipe(imagemin optimizationLevel: 5)
-    .pipe(gulp.dest(dest))
-    .pipe(refresh(lrserver))
+    .pipe(imagemin(
+      progressive: true
+      svgoPlugins: [removeViewBox: true]
+      use: [pngquant()]
+    ))
+    .pipe(gulp.dest(paths.dist))
+    .pipe(livereload())
 
-gulp.task "express", ->
-  app = require("./app.coffee")
-  app.use livereload(port: livereloadport)
-  app.listen(4000)
-
-gulp.task "views", ->
-  dest = path.join paths.dest, "views"
-  gulp.src(paths.views)
-    .pipe(newer dest)
-    .pipe(gulp.dest(dest))
-    .pipe(refresh(lrserver))
+gulp.task "livereload", ->
+  livereload.reload()
 
 gulp.task "watch", ->
-  lrserver.listen(livereloadport)
-
+  livereload.listen()
   gulp.watch paths.scripts, ["scripts"]
   gulp.watch paths.styles, ["styles"]
-  gulp.watch paths.images, ["images"]
-  gulp.watch paths.views, ["views"]
+  gulp.watch paths.views, ["livereload"]
 
-gulp.task "default", [
-  "bower",
-  "scripts",
-  "styles",
-  "images",
-  "views",
-  "watch",
-  "express"
-]
+gulp.task "default", ["scripts", "styles", "watch"]
+gulp.task "deploy", ["scripts", "styles"]

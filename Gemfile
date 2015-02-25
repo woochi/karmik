@@ -1,5 +1,4 @@
 source "https://rubygems.org"
 
-gem "compass", "~> 1.0.0.alpha.19"
-gem "foundation"
-gem "animate", "~> 0.2.beta.0"
+gem "capistrano", "3.3.5"
+gem "capistrano-gulp", "~> 0.0.1"

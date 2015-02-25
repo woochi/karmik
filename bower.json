@@ -2,11 +2,8 @@
   "name": "Karmik",
   "version": "0.0.1",
   "dependencies": {
-    "modernizr": "2.8.1",
-    "jquery": "2.1.1",
-    "react": "0.10.0",
-    "underscore": "1.6.0",
-    "foundation": "5.2.2"
+    "fastclick": "1.0.6",
+    "html5shiv": "3.7.2"
   },
   "private": true
 }
