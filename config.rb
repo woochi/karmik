@@ -1,3 +1,1 @@
 # Compass config
-
-require "animate"

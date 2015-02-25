@@ -1,0 +1,35 @@
+$button-background: $gold5
+$button-background-hover: $gold6
+$button-background-active: $gold7
+
+$button-color: white
+
+.button
+  user-select: none
+  display: inline-block
+  padding: rhythm(0.25) rhythm(0.75)
+  background: $button-background
+  color: $button-color !important
+  text-decoration: none
+  font-weight: $font-weight-medium
+  -webkit-tap-highlight-color: transparent
+
+  &:focus
+    background: $button-background
+
+  &:hover
+    background: $button-background-hover
+
+  &:active
+    background: $button-background-active
+
+@media #{$small-only}
+
+  .button
+    width: 100%
+    text-align: center
+
+@media #{$medium-up}
+
+  .button
+    padding: rhythm(0.5) rhythm(1)

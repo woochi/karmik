@@ -1,0 +1,91 @@
+$text-color: #333
+
+$font-weight-normal: 400
+$font-weight-medium: 500
+$font-weight-bold: 600
+
+$base-font-size: 16px
+$base-line-height: 30px
+$base-font-weight: $font-weight-normal
+$base-font-family: "Avenir Next", "Helvetica Neue", sans-serif
+
+$heading-font-weight: $base-font-weight
+$heading-color: $text-color
+
+$h1-font-size: 61px
+$h2-font-size: 54px
+$h3-font-size: 41px
+$h4-font-size: 36px
+$h5-font-size: 27px
+
+$link-color: blue
+$link-color-hover: $link-color
+$link-color-active: $link-color
+
+*
+  box-sizing: border-box
+
+html, body
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family
+  color: $text-color
+  -webkit-font-smoothing: antialiased
+
+.page
+  height: 100%
+
+%heading
+  +font-size($h5-font-size)
+  margin: 0 0 rhythm(1)
+  font-weight: $heading-font-weight
+  color: $heading-color
+
+h1
+  @extend %heading
+
+h2
+  @extend %heading
+
+h3
+  @extend %heading
+
+h4
+  @extend %heading
+
+h5
+  @extend %heading
+
+a
+  cursor: pointer
+  outline: 0
+  color: $link-color
+
+  &:hover
+    color: $link-color-hover
+
+  &:active
+    color: $link-color-active
+
+strong
+  font-weight: $font-weight-bold
+  color: $gold5
+
+@media #{$medium-up}
+
+  h1
+    +font-size($h1-font-size)
+
+  h2
+    +font-size($h2-font-size)
+
+  h3
+    +font-size($h3-font-size)
+
+  h4
+    +font-size($h4-font-size)
+
+  h5
+    +font-size($h5-font-size, 1.5)

@@ -1,0 +1,18 @@
+$base-font-size: 16px !default
+$base-line-height: 16px !default
+
+@function px-to-rem($px)
+  @return $px * 1rem / $base-font-size
+
+@function rhythm($lines, $font-size: $base-font-size, $offset: 0)
+  @return px-to-rem($lines * $base-line-height - $offset)
+
+@function lines-for-font-size($font-size)
+  @return ceil($font-size / $base-line-height)
+
+@mixin font-size($font-size, $lines: auto)
+  $relative-font-size: px-to-rem($font-size)
+  @if $lines == auto
+    $lines: lines-for-font-size($font-size)
+  font-size: $relative-font-size
+  line-height: rhythm($lines)
