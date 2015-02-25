@@ -37,6 +37,7 @@ set :deploy_to, '/home/deploy/karmik'
 # Default gulp task is empty (i.e. 'gulp')
 # set :gulp_tasks, 'deploy:production'
 set :gulp_file, -> { release_path.join('gulpfile.js') }
+set :gulp_tasks, 'deploy'
 
 # Npm defaults
 set :npm_flags, '--production --silent --no-spin'
@@ -45,10 +46,10 @@ namespace :deploy do
 
   before :updated, 'gulp'
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  after :updated, :monitor do
+    on roles(:web) do
       within release_path do
-        execute :pm2, 'restart #{fetch :application}'
+        execute :pm2, 'start bin/www'
       end
     end
   end

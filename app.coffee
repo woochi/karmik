@@ -2,20 +2,14 @@ express = require("express")
 path = require("path")
 favicon = require("serve-favicon")
 logger = require("morgan")
-cookieParser = require("cookie-parser")
-bodyParser = require("body-parser")
 routes = require("./routes/index")
 helpers = require("./middleware/view-helpers")
 app = express()
-
-help = helpers("Mikko Kiveä")
 
 # view engine setup
 app.set "views", path.join(__dirname, "views")
 app.set "view engine", "jade"
 #app.use favicon()
-app.use logger("dev")
-app.use cookieParser()
 app.use express.static(path.join(__dirname, "build"))
 app.use helpers("Mikko Kivelä")
 app.use "/", routes
