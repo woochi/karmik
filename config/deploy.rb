@@ -42,16 +42,37 @@ set :gulp_tasks, 'deploy'
 # Npm defaults
 set :npm_flags, '--production --silent --no-spin'
 
-namespace :deploy do
+namespace :server do
 
-  before :updated, 'gulp'
-
-  after :updated, :monitor do
+  task :start do
     on roles(:web) do
-      within release_path do
-        execute :pm2, 'start bin/www.coffee'
+      within fetch(:deploy_to) do
+        execute "pm2 start bin/www.coffee"
       end
     end
   end
+
+  task :restart do
+    on roles(:web) do
+      within fetch(:deploy_to) do
+        execute "pm2 restart www"
+      end
+    end
+  end
+
+  task :stop do
+    on roles(:web) do
+      within fetch(:deploy_to) do
+        execute :pm2, "stop www"
+      end
+    end
+  end
+
+end
+
+namespace :deploy do
+
+  before :updated, 'gulp'
+  after :restart, "server:restart"
 
 end
