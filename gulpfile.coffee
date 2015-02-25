@@ -1,6 +1,5 @@
 gulp = require("gulp")
 uglify = require("gulp-uglify")
-imagemin = require("gulp-imagemin")
 browserify = require("browserify")
 gutil = require("gulp-util")
 sass = require("gulp-sass")
@@ -38,7 +37,6 @@ gulp.task "scripts", ->
 gulp.task "styles", ->
   gulp.src(paths.styles)
     .pipe(sass(
-      compass: true
       indentedSyntax: true
       errorLogToConsole: true
       onError: gutil.log
@@ -46,15 +44,6 @@ gulp.task "styles", ->
     .pipe(autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7"))
     .on("error", gutil.log)
     .pipe(gulp.dest(path.join(paths.dest, "stylesheets")))
-    .pipe(livereload())
-
-gulp.task "images", ->
-  gulp.src(paths.images)
-    .pipe(imagemin(
-      progressive: true
-      svgoPlugins: [removeViewBox: true]
-    ))
-    .pipe(gulp.dest(paths.dist))
     .pipe(livereload())
 
 gulp.task "livereload", ->
