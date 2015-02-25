@@ -10,10 +10,10 @@ html
     <!--[if lt IE 9]>
     <script src="/javascripts/html5shiv.min.js"></script>
     <![endif]-->
+    script
+      include ga.js
     script(type="text/javascript", src="http://fast.fonts.net/jsapi/f5dc34d3-e5ae-4fd4-a647-0edc6acc7954.js")
   body(class="#{currentPage()}")
     block body
     script(type="text/javascript", src="/javascripts/app.js", async=true)
     block scripts
-    script
-      include ga.js
