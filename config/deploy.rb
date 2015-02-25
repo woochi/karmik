@@ -49,7 +49,7 @@ namespace :deploy do
   after :updated, :monitor do
     on roles(:web) do
       within release_path do
-        execute :pm2, 'start bin/www'
+        execute :pm2, 'start bin/www.coffee'
       end
     end
   end
