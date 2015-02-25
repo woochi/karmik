@@ -8,6 +8,7 @@ path = require("path")
 coffeeify = require("coffeeify")
 source = require('vinyl-source-stream')
 streamify = require('gulp-streamify')
+cssmin = require('gulp-cssmin')
 livereload = require("gulp-livereload")
 
 paths =
@@ -40,6 +41,7 @@ gulp.task "styles", ->
       onError: gutil.log
     ))
     .pipe(autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7"))
+    .pipe(cssmin())
     .on("error", gutil.log)
     .pipe(gulp.dest(path.join(paths.dest, "stylesheets")))
 
