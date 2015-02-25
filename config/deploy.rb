@@ -44,6 +44,14 @@ set :npm_flags, '--production --silent --no-spin'
 
 namespace :server do
 
+  task :delete do
+    on roles(:web) do
+      within fetch(:deploy_to) do
+        execute "cd #{release_path} && pm2 delete www"
+      end
+    end
+  end
+
   task :start do
     on roles(:web) do
       within fetch(:deploy_to) do
@@ -73,6 +81,7 @@ end
 namespace :deploy do
 
   before :updated, 'gulp'
-  after :restart, "server:restart"
+  after :updated, "server:delete"
+  after :updated, "server:start"
 
 end

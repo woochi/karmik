@@ -5,16 +5,17 @@ logger = require("morgan")
 routes = require("./routes/index")
 helpers = require("./middleware/view-helpers")
 robots = require('robots.txt')
+serveStatic = require("serve-static")
 app = express()
 
 # view engine setup
 app.set "views", path.join(__dirname, "views")
 app.set "view engine", "jade"
 #app.use favicon()
-app.use express.static(path.join(__dirname, "build"))
+app.use serveStatic(path.join(__dirname, "build"), index: false)
+app.use serveStatic(path.join(__dirname, "public"), index: false)
 app.use helpers("Mikko Kivelä")
 app.use "/", routes
-app.use robots(__dirname + "/robots.txt")
 
 #/ catch 404 and forwarding to error handler
 app.use (req, res, next) ->
