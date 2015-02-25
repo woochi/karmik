@@ -4,7 +4,6 @@ favicon = require("serve-favicon")
 logger = require("morgan")
 routes = require("./routes/index")
 helpers = require("./middleware/view-helpers")
-robots = require('robots.txt')
 serveStatic = require("serve-static")
 app = express()
 
