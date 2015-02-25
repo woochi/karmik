@@ -5,7 +5,8 @@ $button-background-active: $gold7
 $button-color: white
 
 .button
-  user-select: none
+  +appearance(none)
+  +user-select(none)
   display: inline-block
   padding: rhythm(0.25) rhythm(0.75)
   background: $button-background

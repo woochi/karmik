@@ -7,7 +7,6 @@ autoprefixer = require("gulp-autoprefixer")
 path = require("path")
 coffeeify = require("coffeeify")
 source = require('vinyl-source-stream')
-uglify = require('gulp-uglify')
 streamify = require('gulp-streamify')
 livereload = require("gulp-livereload")
 
@@ -29,7 +28,6 @@ gulp.task "scripts", ->
     .pipe(source("app.js"))
     .pipe(streamify(uglify()))
     .pipe(gulp.dest(path.join(paths.dest, "javascripts")))
-    .pipe(livereload())
 
   gulp.src("./vendor/html5shiv/dist/html5shiv.min.js")
     .pipe(gulp.dest(path.join(paths.dest, "javascripts")))
@@ -44,15 +42,14 @@ gulp.task "styles", ->
     .pipe(autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7"))
     .on("error", gutil.log)
     .pipe(gulp.dest(path.join(paths.dest, "stylesheets")))
-    .pipe(livereload())
 
 gulp.task "livereload", ->
   livereload.reload()
 
 gulp.task "watch", ->
   livereload.listen()
-  gulp.watch paths.scripts, ["scripts"]
-  gulp.watch paths.styles, ["styles"]
+  gulp.watch paths.scripts, ["scripts", "livereload"]
+  gulp.watch paths.styles, ["styles", "livereload"]
   gulp.watch paths.views, ["livereload"]
 
 gulp.task "default", ["scripts", "styles", "watch"]
