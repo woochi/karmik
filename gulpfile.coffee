@@ -8,7 +8,6 @@ autoprefixer = require("gulp-autoprefixer")
 path = require("path")
 browserSync  = require('browser-sync')
 reload = browserSync.reload
-pngquant = require('imagemin-pngquant')
 coffeeify = require("coffeeify")
 source = require('vinyl-source-stream')
 uglify = require('gulp-uglify')
@@ -59,7 +58,6 @@ gulp.task "images", ->
     .pipe(imagemin(
       progressive: true
       svgoPlugins: [removeViewBox: true]
-      use: [pngquant()]
     ))
     .pipe(gulp.dest(paths.dist))
     .pipe(livereload())
