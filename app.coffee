@@ -4,6 +4,7 @@ favicon = require("serve-favicon")
 logger = require("morgan")
 routes = require("./routes/index")
 helpers = require("./middleware/view-helpers")
+robots = require('robots.txt')
 app = express()
 
 # view engine setup
@@ -13,6 +14,7 @@ app.set "view engine", "jade"
 app.use express.static(path.join(__dirname, "build"))
 app.use helpers("Mikko Kivelä")
 app.use "/", routes
+app.use robots(__dirname + "/robots.txt")
 
 #/ catch 404 and forwarding to error handler
 app.use (req, res, next) ->
