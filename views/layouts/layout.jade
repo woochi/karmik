@@ -1,29 +1,17 @@
 doctype html
 html
   head
-    title= title
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='Mikko Kivelä is a developer and designer of accessible web and app experiences')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Mikko Kivelä
     link(rel='stylesheet', href='/stylesheets/app.css')
-    link( href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
+    <!--[if lt IE 9]>
+    <script src="/javascripts/html5shiv.min.js"></script>
+    <![endif]-->
+    script(type="text/javascript", src="http://fast.fonts.net/jsapi/f5dc34d3-e5ae-4fd4-a647-0edc6acc7954.js")
   body(class="#{currentPage()}")
-    section#sidebar
-    section#page
-      block navigation
-      block header
-      section#content
-        block content
-        #content-footer
-      footer#footer
-        .row
-          .column.medium-12
-            ul.some-links
-              li
-                a(href="https://twitter.com")
-                  i.fa.fa-lg.fa-twitter-square
-              li
-                a(href="https://linkedin.com")
-                  i.fa.fa-lg.fa-linkedin-square
-              li
-                a(href="mailto:mikko.s.kivela@gmail.com")
-                  i.fa.fa-lg.fa-envelope-o
-            include ../partials/navigation
-            | &copy; 1990-2014 Mikko Kivelä
+    block body
+    script(type="text/javascript", src="/javascripts/app.js", async=true)
+    block scripts

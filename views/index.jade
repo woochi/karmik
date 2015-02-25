@@ -1,34 +1,18 @@
-extends layouts/hero
-
-block header
-  header#hero
-    .hero-content
-      h1.hero-title Designing Experiences
-      hr.hero-rule
-      h2.hero-subtitle
-        | I'm Mikko, a user interface developer based in Helsinki, Finland.<br>
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br>
-        | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+extends layouts/cover
 
 block content
-  article.featurette
-    .row
-      .column.medium-12.medium-centered
-        h2.featurette-title Some shorter title
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  article.featurette
-    .row
-      .column.medium-12.medium-centered.text-center
-        hr
-        h2.featurette-title Some Longer Title That Spans Two Columns
-    .row
-      .column.medium-6
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      .column.medium-6
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  article.featurette
-    .row
-      .column.medium-12.medium-centered
-        hr
-        h2.featurette-title Another shorter title with text
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  header.feature
+    .feature-content(itemscope itemtype="http://schema.org/Person")
+      h1.feature-title
+        | This Is Mikko:<br>
+        span(itemprop="jobtitle") Developer & Designer
+      h2.feature-subtitle
+        | <span itemprop="name">Mikko Kivelä</span>
+        | is a builder of accessible web and app experiences.<wbr>
+        | Currently living in
+        | <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        | <span itemprop="addressLocality">Helsinki</span>,
+        | <span itemprop="addressCountry">Finland</span>
+        | </span>
+        | and <strong>looking for projects</strong>.
+      a.button(href="mailto:hello@mikkokivela.com") Write an email
