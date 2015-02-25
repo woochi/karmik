@@ -1,4 +1,4 @@
-karmik
+Karmik
 ======
 
-Personal portfolio of Mikko Kivelä.
+Personal portfolio of Mikko Kivelä. Available at: http://mikkokivela.com.
