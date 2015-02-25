@@ -5,12 +5,14 @@ logger = require("morgan")
 routes = require("./routes/index")
 helpers = require("./middleware/view-helpers")
 serveStatic = require("serve-static")
+compression = require('compression')
 app = express()
 
 # view engine setup
 app.set "views", path.join(__dirname, "views")
 app.set "view engine", "jade"
 #app.use favicon()
+app.use compression()
 app.use serveStatic(path.join(__dirname, "build"), index: false)
 app.use serveStatic(path.join(__dirname, "public"), index: false)
 app.use helpers("Mikko Kivelä")
