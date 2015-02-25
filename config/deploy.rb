@@ -38,6 +38,10 @@ set :deploy_to, '/home/deploy/karmik'
 # set :gulp_tasks, 'deploy:production'
 set :gulp_file, -> { release_path.join('gulpfile.js') }
 
+# Npm defaults
+# set :npm_flags, '--production --silent --no-spin'
+set :npm_flags, '--silent --no-spin'
+
 namespace :deploy do
 
   before :updated, 'gulp'
