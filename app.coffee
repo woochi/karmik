@@ -16,9 +16,8 @@ app.use "/", routes
 
 #/ catch 404 and forwarding to error handler
 app.use (req, res, next) ->
-  err = new Error("Not Found")
-  err.status = 404
-  next err
+  res.status(404)
+  res.render("errors/404")
   return
 
 
@@ -40,10 +39,7 @@ if app.get("env") is "development"
 # no stacktraces leaked to user
 app.use (err, req, res, next) ->
   res.status err.status or 500
-  res.render "error",
-    message: err.message
-    error: {}
-
+  res.render("errors/500")
   return
 
 module.exports = app
