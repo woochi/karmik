@@ -22,7 +22,7 @@ gulp.task "scripts", ->
   bundleStream = browserify(
     entries: ["./assets/javascripts/app.coffee"]
     debug: true
-  ).bundle()
+  ).transform("coffeeify").bundle()
 
   bundleStream
     .on("error", gutil.log)
