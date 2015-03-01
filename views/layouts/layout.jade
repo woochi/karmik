@@ -42,4 +42,15 @@ html(lang="en" itemscope itemtype="http://schema.org/ProfilePage")
   body(class="#{currentPage()}")
     script(type="text/javascript", src="/javascripts/app.js", async=true)
     block scripts
+    nav
+      include nav_links
     block body
+    footer
+      | &copy;
+      | <span itemprop="copyrightHolder" rel="http://mikkokivela.com">
+      | <span itemscope itemtype="http://schema.org/Person">
+      link(itemprop="url" href="http://mikkokivela.com")
+      | Mikko Kivelä
+      | </span>
+      | </span>
+      | <span itemprop="copyrightYear">#{date.format("YYYY")}</span>
