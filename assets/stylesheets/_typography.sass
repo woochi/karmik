@@ -35,12 +35,13 @@ html, body
   -webkit-font-smoothing: antialiased
 
 html
+  opacity: 0
 
   &.mti-loading
-    opacity: 0
+    will-change: opacity
 
-  &.mti-active
-    opacity: 1
+  &.mti-active, &.mti-inactive
+    animation: fadeIn 0.5s ease-out forwards
 
 .page
   height: 100%
