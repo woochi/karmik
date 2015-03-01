@@ -1,6 +1,7 @@
 url = require("url")
 jade = require("jade")
 path = require("path")
+moment = require("moment")
 
 isCurrent = (req, href) ->
   req.url is url.resolve(req.url, href)
@@ -36,6 +37,7 @@ helpers = (appName) ->
     res.locals.currentPage = -> currentPage(req)
     res.locals.navItem = (text, href, options) ->
       navItem(req, text, href, options)
+    res.locals.date = moment()
     next()
 
 module.exports = helpers
