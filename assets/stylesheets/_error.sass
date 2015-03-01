@@ -1,0 +1,23 @@
+.error
+  @extend .feature
+
+.error-content
+  @extend .feature-content
+  vertical-align: middle
+  max-width: rhythm(20)
+  text-align: center
+
+.error-title
+  +font-size($h2-font-size)
+
+.error-description
+  @extend .feature-subtitle
+  margin: 0 auto
+
+  &:after
+    content: ""
+    display: block
+    height: 4px
+    width: rhythm(3)
+    margin: rhythm(1, $offset: 2px) auto
+    background: $gold5

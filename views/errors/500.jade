@@ -1,4 +1,8 @@
 extends ../layouts/error
 
 block content
-  h1 Internal server error
+  h1.error-title Internal server error.
+  p.error-description
+    | Try reloading the page after a moment.
+    | If the issue persists, please report the error to
+    | <a href="mailto:hello@mikkokivela.com">hello@mikkokivela.com</a>.
